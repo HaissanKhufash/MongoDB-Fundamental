@@ -1,0 +1,45 @@
+- updateOne():
+    Updates a only document that matches with the filter in the collection.
+    Syntax:
+    db.collectionName.updateOne(filter, update)
+    i.e.
+    db.Premier_League.updateOne(
+        {titles: 0}, {$set: {comment: 'This team has never won a Premier League.'}}
+    )
+    In the above example, $set sets a value in the first found log in the collection, it's matter to know that
+    updateOne() filter parameter must be an _id, it's its utility performance.
+
+- updateMany():
+    Updates all documents that match with the specified filter to a collection.
+    Syntax:
+    db.collectionName.updateMany(filter, update)
+    i.e.
+    db.Premier_League.updateMany({
+    'Kit colors': 'Red and black'
+    },
+    {
+        $push:
+        {
+            'Classic rivalries': {
+                $each: 
+                     ["Each of the remains", "Unless black reds"]
+            }
+        }
+    })
+
+- replaceOne():
+    Replace a only document that matches with the filter in the collection.
+    Syntax:
+    db.collectionName.replaceOne(filter, replacement)
+    i.e.
+    let filter = {
+        team: 'Wolverhaptom Wonderers'
+    }
+
+    let replacement = {
+        team: 'Wolves',
+        'Kit colors': 'Orange and black',
+        titles: 0
+    }
+
+    db.Premier_League.replaceOne(filter, replacement)

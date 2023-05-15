@@ -1,0 +1,20 @@
+- deleteOne():
+    Deletes the first document that matches the filter. Use a field that is part of a unique index such 
+    as _id for precise deletions.
+    Syntax: db.collectionName.deleteOne(<filter>)
+    i.e. 
+    let filter = {
+        team: 'Wolves'
+    }
+
+    db.Premier_League.deleteOne(filter)
+
+- deleteMany():
+    Removes all documents that match the filter from a collection.
+    Syntax: db.collectionName.deleteMany(<filter>)
+    i.e.
+    let filter = {
+        'Kit colors': 'Red and black'
+    }
+
+    db.Premier_League.deleteMany(filter)

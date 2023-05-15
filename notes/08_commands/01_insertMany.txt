@@ -1,0 +1,30 @@
+It's a method that allows to insert documents in a collection.
+* If the collection doesn't exist currently, this method will create it.
+- Syntax:
+    > use dbName
+    > db.collectionName.insertMany(
+        [
+            {
+            "firstField": "Value",
+            "secondField": {
+                "secondValue": 0
+            },
+            "thirdField": [1, 2, 3],
+            and so on...
+            },
+
+            {
+            "firstField": "Value",
+            "secondField": {
+                "secondValue": 0
+            },
+            "thirdField": [1, 2, 3],
+            and so on...
+            }
+        ],
+        {
+            "ordered": <Boolean value>
+        }
+    )
+
+Ordered field receives a bool value that determines if inserted documents are gonna be sorted.

@@ -1,0 +1,9 @@
+- Cursor: allows us to see some queries, when we carry a query out, the cursor stays in the last one and, if we
+require to see other logs we can set the cursor to do it.
+- Projection: When we carry a query out, projections allow us to set which fields will be shown when the query
+finds the results.
+i.e.
+db.collectionName.find(
+    {"firstField": {$gt: 18}}, ==> range filter -you might use whether kind of filter.
+    {"secondField": 1, "thirdField": 1} => projection, only it'll show the defined fields (1 to show, otherwise 0)
+).limit(5) ==> logs to show

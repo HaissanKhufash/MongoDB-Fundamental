@@ -1,0 +1,16 @@
+- It's a document-oriented DBMS in which every log is stored in a JSON document.
+JavaScript is the query language by default.
+- Documents are constituted by fields.
+- Documents are grouped by collections.
+- This one use dynamic schemes:
+    Allows to create no defined structure collections (different structures in the same section).
+
+=> Access to a collection:
+    DBName.collectionName
+        Content be like:
+        JSONDocument...
+        JSONDocument...
+        JSONDocument...
+        JSONDocument...
+        They're JSON files known as "documents", in which everyone is identified by the "_id" field,
+        thence values must be unique.

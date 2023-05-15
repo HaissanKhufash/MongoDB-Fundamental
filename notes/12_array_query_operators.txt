@@ -1,0 +1,35 @@
+- $all ===> Operator selects the documents where the value of a field is an array that contains 
+all the specified elements.
+Syntax: { <field>: { $all: [ <value1> , <value2> ... ] } }
+i.e.
+db.Premier_League.find({'Classic rivalries': 
+    {$all: ['Chelsea', 'Liverpool']}
+})
+
+- $elemMatch ===> Operator matches documents that contain an array field with at least one element that 
+matches all the specified query criteria.
+Syntax: { <field>: { $elemMatch: { <query1>, <query2>, ... } } }
+i.e.
+db.Premier_League.find(
+    {
+        average:
+            {
+                $elemMatch:
+                    {
+                        $gt: 3, $lt: 7 
+                    }
+            }
+    }
+)
+
+- $size ===> Operator matches any array with the number of elements specified by the argument.
+Syntax: ( { <field>: { $size: <value> } } )
+i.e.
+db.Premier_League.find(
+    {
+        average:
+            {
+                $size: 5
+            }
+    }
+)    

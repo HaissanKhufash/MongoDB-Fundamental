@@ -1,0 +1,5 @@
+- Go to https://www.mongodb.com/try/download/enterprise and download MongoDB.
+- Execute the executeable to install MongoDB on your device.
+- Go to https://www.mongodb.com/try/download/shell and download Mongosh
+- Add in the variable Path of environment variables the paths in which MongoDB and Mongosh both are stored.
+- Run in terminal > mongosh -version to corroborate if it was set.

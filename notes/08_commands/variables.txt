@@ -1,0 +1,11 @@
+We can assign variables like we do it in JavaScript:
+    i.e.
+    let filter = {
+        team: 'Wolverhaptom Wonderers'
+    }
+
+    let replacement = {
+        team: 'Wolves',
+        'Kit colors': 'Orange and black',
+        titles: 0
+    }

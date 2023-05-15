@@ -1,0 +1,9 @@
+Find data with equality filters:
+    > use dbName
+    > db.collectionName.find({"firstField": 1}).pretty()
+    With a document as data type:
+    > db.collectionName.find({'firstField.document': 2}).pretty()
+    With a vector as data type:
+    > db.collectionName.find({"firstField.0": 3}).pretty() ==> if it's found in that index
+    > db.collectionName.find({"firstField": 3}).pretty() ==> if it's found in the field regardless a position
+    > db.collectionName.find({"firstField": [4, 5]}).pretty() ==> if it's found in the field exactly as it's defined

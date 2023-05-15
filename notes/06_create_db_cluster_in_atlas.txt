@@ -1,0 +1,7 @@
+- Create an account in MongoDB Atlas 
+- Create a cluster choosing the free option (512mb)
+- Select a cloud provider (AWS, Google Cloud, etc...) and recommended region
+- Set a project name
+- Configure IP Address to connect
+- Select connect option and get required string, thence we could connect with our cluster and
+manage it from either Compass or Mongosh.

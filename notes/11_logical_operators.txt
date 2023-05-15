@@ -1,0 +1,58 @@
+- $and ===> performs a logical AND operation on an array of one or more expressions 
+(<expression1>, <expression2>, and so on) and selects the documents that satisfy all 
+the expressions.
+Syntax: { $and: [ { <expression1> }, { <expression2> } , ... , { <expressionN> } ] }
+i.e. 
+db.Premier_League.find({
+    $and: [
+        {titles: {$gt: 5}},
+        {'Kit colors': 'Red and black'}
+    ]
+})
+
+- $or ===> performs a logical OR operation on an array of one or more <expressions> and selects 
+the documents that satisfy at least one of the <expressions>.
+Syntax: { $or: [ { <expression1> }, { <expression2> }, ... , { <expressionN> } ] }
+i.e.
+db.Premier_League.find({
+    $or: [
+        {titles: {$gte: 10}},
+        {'Classic rivalries.0': 'Manchester United'}
+    ]
+})
+
+- $nor ===> performs a logical NOR operation on an array of one or more query expression and selects the documents 
+that fail all the query expressions in the array. 
+Syntax: { $nor: [ { <expression1> }, { <expression2> }, ...  { <expressionN> } ] }
+i.e.
+db.Premier_League.find({
+    $nor: [
+        {titles: {$gte: 10}},
+        {'Classic rivalries.0': 'Manchester United'}
+    ]
+})
+
+- $not ===> performs a logical NOT operation on the specified <operator-expression> and selects the documents that 
+do not match the <operator-expression>. This includes documents that do not contain the field.
+Syntax: { field: { $not: { <operator-expression> } } }
+i.e.
+db.Premier_League.find({titles:
+    {$not: {$gte: 10}}
+})
+
+We can nest logical operators
+Following way it's the manner in wich we must nest logical operators:
+{ $operator: [
+    { operator-expression },
+    { operator-expression },
+    { operator-expression },
+    And so on...
+] }
+
+i.e.
+db.Premier_League.find({
+        $and: [
+            {titles: {$gte: 3}},
+            {team: {$not: {$eq: 'Aston Villa'}}}
+        ]
+})

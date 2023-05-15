@@ -1,0 +1,4 @@
+In the address in which you have stored your file with the elements to insert, execute the string to connect
+to your cluster in the console and, type your file, from there the documents are gonna inserted.
+i.e.
+mongosh "mongodb+srv://learning-mongodb.cvfadkv.mongodb.net" --apiVersion 1 --username haissank <filename.js>

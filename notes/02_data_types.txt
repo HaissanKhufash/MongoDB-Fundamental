@@ -1,0 +1,7 @@
+- string
+Numbers:
+    - int32 ===> Integer
+    - double ===> Float
+- date ===> format: YYYY-MM-ddTh:m:s.000+00:00
+- object (or document)
+- array

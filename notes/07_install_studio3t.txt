@@ -1,0 +1,8 @@
+- Go to https://studio3t.com/download-studio3t-free/ and download Studio 3T.
+- Execute the executeable to carry the installation out.
+- For what's Studio 3T utility? ===> Allow us controlling its shell which is utility easier than the CLI at the 
+time of using commands.
+* Compass must be installed previously
+                                    Making a connection
+- Get a URI to paste in the determined field and configure your authentication data.
+- You're able to make queries in a kind way.

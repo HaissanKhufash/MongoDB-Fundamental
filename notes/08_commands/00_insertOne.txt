@@ -1,0 +1,14 @@
+It's a method that allows to insert a document in a collection.
+* If the collection doesn't exist currently, this method will create it.
+- Syntax:
+    > use dbName
+    > db.collectionName.insertOne(
+        {
+            "firstField": "Value",
+            "secondField": {
+                "secondValue": 0
+            },
+            "thirdField": [1, 2, 3],
+            and so on...
+        }
+    )

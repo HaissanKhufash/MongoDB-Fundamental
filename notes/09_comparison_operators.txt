@@ -1,0 +1,47 @@
+___________________________________________________________________________________________________________________
+|                                                                                                                 |
+|                                  $eq               =                           equal to                         |
+|                                  $ne              <>                           not equal to (distinc)           |
+|                                  $gt              >                            greater than                     |
+|                                  $gte             >=                           greater than or equal to         |
+|                                  $lt              <                            less than                        |
+|                                  $lte             <=                           less than or equal to            |
+|                                  $in              IN                           belonging to                     |
+|                                  $nin             NOT IN                       not belonging to                 |
+___________________________________________________________________________________________________________________
+
+- $eq ===> Specifies equality condition. The $eq operator matches documents where the value of a field equals 
+the specified value.
+Specifying the $eq operator is equivalent to using the form { field: <value> } except when the <value> is 
+a regular expression.
+Syntax: { <field>: { $eq: <value> } }
+
+- $ne ===> Selects the documents where the value of the field is not equal to the specified value. This 
+includes documents that do not contain the field.
+Syntax: { field: { $ne: <value> } }
+
+- $gt ===> Selects those documents where the value of the field is greater than the specified value.
+Syntax: { field: { $gt: <value> } }
+
+- $gte ===> Selects the documents where the value of the field is greater than or equal to a specified value.
+Syntax: { field: { $gte: <value> } }
+
+- $lt ===> Selects the documents where the value of the field is less than the specified value.
+Syntax: { field: { $lt: <value> } }
+
+- $lte ===> Selects the documents where the value of the field is less than or equal to the specified value.
+Syntax: { field: { $lte: <value> } }
+
+- $in ===> Selects the documents where the value of a field equals any value in the specified array.
+Syntax: { field: { $in: [<value1>, <value2>, ... <valueN> ] } }
+
+- $nin ===> Selects the documents where:
+    the field value is not in the specified array or
+    the field does not exist.
+Syntax: { field: { $nin: [ <value1>, <value2> ... <valueN> ] } }
+
+                                            COMBINING OPERATORS
+i.e. db.Premier_League.find({titles: {$lte: 5, $gt: 0}})
+
+                                            Query multifield
+i.e. db.Premier_League.find({'Kit colors': {$in: ['Red and black', 'Eton blue']}, titles: {$gte: 2}})

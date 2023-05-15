@@ -1,0 +1,25 @@
+Creates a new document if no documents match the query. For more details see 
+upsert behavior.
+Updates a single document that matches the query.
+Its value must be boolean, by default is false.
+i.e.
+db.Premier_League.update(
+    {
+        _id: "645677b60b0de0477cce634"
+    },
+    {
+        $set: 
+        {
+            team: "Newcastle United",
+            'Kit colors': 'Black and white',
+            titles: 4,
+            'Current manager': 'Eddie Howe'
+        }
+    },
+    {
+        upsert: true
+    }
+)
+If exists no document with 645677b60b0de0477cce634 as an _id, it will be created with the data passed as update
+info.
+That's why it's known as upsert (Update or insert...)

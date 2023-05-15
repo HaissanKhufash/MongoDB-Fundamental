@@ -1,0 +1,104 @@
+                                                        FIELDS
+
+- $set ===> Considers a document as an argument and, updates the document that matches with the filter's specified
+fields in the $set document.
+i.e. {$set: {comment: 'This team has never won a Premier League.'}} ===> If it doesn't exist, adds it, otherwise,
+replace it with the value passed as argument.
+
+- $currentDate ===> Sets the value of a field to current date, either as a Date or a Timestamp.
+
+- $inc ===> Increments the value of the field by the specified amount.
+i.e. db.Premier_League.updateOne({'team': 'Manchester City'}, {$inc: {"titles": 1}})
+
+- $min ===> Only updates the field if the specified value is less than the existing field value.
+i.e. db.Premier_League.updateOne({'Classic rivalries': "Chelsea"}, {$min: {"titles": 5}})
+
+- $max ===> Only updates the field if the specified value is greater than the existing field value.
+i.e. db.Premier_League.updateOne({'Classic rivalries': "Chelsea"}, {$max: {"titles": 8}})
+
+- $mul ===> Multiplies the value of the field by the specified amount.
+
+- $rename ===> Renames a field.
+i.e. db.Premier_League.updateOne({titles: 0}, {$rename: {"comment": "feedback"}})
+
+- $setOnInsert ===> Sets the value of a field if an update results in an insert of a document. Has no effect on update
+operations that modify existing documents.
+
+- $unset ===> Removes the specified field from a document.
+i.e. db.Premier_League.updateOne({'titles': 0}, {$unset: {"feedback": 00}})
+
+                                                        
+                                                        ARRAYS
+
+- $addToSet ===> Adds elements to an array only if they do not already exist in the set.
+Syntax: { $addToSet: { <field1>: <value1>, ... } } adds a value to an array unless the value is already present,
+in which case $addToSet does nothing to that array.
+i.e. db.Premier_League.updateOne(
+    {"team": "Arsenal"},
+    {$addToSet: {"Classic rivalries": "Tottenham Spurs"}}
+    )
+
+- $pop ===> Removes the first or last item of an array. 1 to remove the last and, -1 to remove the first.
+Syntax: { $pop: { <field>: <-1 | 1>, ... } }
+i.e. db.Premier_League.updateOne(
+    {"team": "Arsenal"},
+    {$pop: {"Classic rivalries": 1}}
+    )
+i.e. db.Premier_League.updateOne(
+    {"team": "Arsenal"},
+    {$pop: {"Classic rivalries": -1}}
+    )
+
+- $push ===> Adds an item to an array.
+Syntax: { $push: { <field1>: <value1>, ... } }
+i.e. db.Premier_League.updateOne(
+    {"Classic rivalries": "Preston F.C"}, 
+    {$push: {"Truth rivalries": ["Tottenham Spurs", "Chelsea F.C"]}}
+    ) ===> Adds an array to the document with the values passed by arguments.
+
+- $pull ===> Removes all array elements that match a specified query.
+Syntax: { $pull: { <field1>: <value|condition>, <field2>: <value|condition>, ... } }
+i.e. db.Premier_League.updateOne(
+    {"team": "Arsenal"},
+    {$pull: {"Classic rivalries": ["West Ham", "Tottenham Spurs"]}}
+    )
+
+- $pullAll ===> Removes all matching values from an array. Removes all instances of the specified values 
+from an existing array. Unlike the $pull operator that removes elements by specifying a query, $pullAll removes
+elements that match the listed values.
+Syntax: { $pullAll: { <field1>: [ <value1>, <value2> ... ], ... } }
+i.e. db.Premier_League.updateOne(
+    {"team": "Arsenal"},
+    {$pullAll: {"Classic rivalries": ["West Ham", "Tottenham Spurs"]}}
+    )
+
+                                                MODIFIERS
+
+- $each ===> Modifies the $push and $addToSet operators to append multiple items for array updates.
+Syntax: { $addToSet or $push: { <field>: { $each: [ <value1>, <value2> ... ] } } }
+i.e. db.Premier_League.updateOne(
+    {"team": "Arsenal"},
+    {$addToSet: {"Classic rivalries": {$each: ["West Ham", "Chelsea F.C"]}}}
+    )
+
+- $position ===> Modifies the $push operator to specify the position in the array to add elements.
+To use the $position modifier, it must appear with the $each modifier.
+Syntax: {
+  $push: {
+    <field>: {
+       $each: [ <value1>, <value2>, ... ],
+       $position: <num>
+    }
+  }
+}
+i.e. db.Premier_League.updateOne(
+    {"team": "Arsenal"},
+    {
+        $push: {
+            "Classic rivalries": {
+                $each: ["Brighton & Hove Albion", "Manchester City"], 
+                $position: 0
+            }
+        }
+    }
+)

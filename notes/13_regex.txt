@@ -1,0 +1,11 @@
+Provides regular expression capabilities for pattern matching strings in queries.
+To use $regex, use one of the following syntaxes:
+{ <field>: { $regex: /pattern/, $options: '<options>' } }
+{ <field>: { $regex: 'pattern', $options: '<options>' } }
+{ <field>: { $regex: /pattern/<options> } }
+
+In MongoDB, you can also use regular expression objects (i.e. /pattern/) to specify regular expressions:
+{ <field>: /pattern/<options> }
+
+$options
+    i, m, x or s.

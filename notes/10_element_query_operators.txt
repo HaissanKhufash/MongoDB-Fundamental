@@ -1,0 +1,40 @@
+- $exists ===> When <boolean> is true, $exists matches the documents that contain the field, including 
+documents where the field value is null. If <boolean> is false, the query returns only the documents that 
+do not contain the field.
+Syntax: { field: { $exists: <boolean> } }
+i.e. db.Premier_League.find({'Current manager': {$exists: false}}) Only displays the documents without the
+Current manager field.
+i.e. db.Premier_League.find({'Current manager': {$exists: true}}) Only displays the documents that 
+contain the Current manager field.
+
+- $type ===> Selects documents where the value of the field is an instance of the specified BSON type(s). 
+Querying by data type is useful when dealing with highly unstructured data where data types are not predictable.
+Syntax: { field: { $type: <BSON type> } }
+i.e. db.Premier_League.find({'team': {$type: "int}})
+
+The $type expression can also accept an array of BSON types and has the following syntax:
+{ field: { $type: [ <BSON type1> , <BSON type2>, ... ] } }
+i.e. db.Premier_League.find({'team': {$type: ["int", "string"]}})
+
+_________________________________________________BSON TYPES______________________________________________________
+| Type                                         Number                              Alias                         |
+|________________________________________________________________________________________________________________|
+| Double                                       1                                   "double"                      |
+| String                                       2                                   "string"                      |
+| Object                                       3                                   "object"                      |
+| Array                                        4                                   "array"                       |
+| Binary data                                  5                                   "binData"                     |
+| ObjectId                                     7                                   "objectId"                    |
+| Boolean                                      8                                   "bool"                        |
+| Date                                         9                                   "date"                        |
+| Null                                         10                                  "null"                        |
+| Regular expression                           11                                  "regex"                       |
+| JavaScript                                   13                                  "javascript"                  |
+| Symbol                                       14                                  "symbol"                      |
+| 32-bit integer                               16                                  "int"                         |
+| Timestamp                                    17                                  "timestamp"                   |
+| 64-bit integer                               18                                  "long"                        |
+| Decimal128                                   19                                  "decimal"                     |
+| Min key                                      -1                                  "minKey"                      |
+| Max key                                      127                                 "maxKey"                      |
+|________________________________________________________________________________________________________________|
